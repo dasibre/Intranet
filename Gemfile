@@ -5,7 +5,7 @@ gem 'rails', '3.1.3'
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
+
 
 
 # Gems used only for assets and not required
@@ -21,6 +21,7 @@ group :development, :test do
   gem 'rspec-rails', "~> 2.10.0"
   gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git'
   gem 'faker', '0.3.1', :require => false
+  gem 'sqlite3'
  # gem 'haml-rails'
   #gem 'hpricot'
   #gem 'ruby_parser'
