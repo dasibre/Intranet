@@ -1,10 +1,34 @@
+# == Schema Information
+#
+# Table name: people
+#
+#  id            :integer          not null, primary key
+#  title         :string(255)
+#  first_name    :string(255)      not null
+#  last_name     :string(255)      not null
+#  email         :string(100)      not null
+#  work_phone    :string(50)
+#  mobile        :string(50)
+#  job_title     :string(255)
+#  gender        :string(1)
+#  string        :string(1)
+#  keywords      :string(255)
+#  notes         :text
+#  address_id    :integer
+#  company_id    :integer
+#  created_at    :datetime
+#  updated_at    :datetime
+#  date_of_birth :date
+#
+
 require 'spec_helper'
 
 describe Person do
 	
 	before do 
 		@attr = {:first_name => "Joe", :last_name => "smith", :email => "jsmith@ex.com", :gender => "M"}
-		@person = Person.new(@attr)
+		#@person = Person.new(@attr)
+		@person = Factory(:person)
 	end
 	
 	subject { @person }
@@ -42,13 +66,14 @@ describe Person do
 	end
 
 	describe "when email is already taken" do
-		before do
-			Person.new(@attr)
+		it "should not create new user" do
+			Person.create!(@attr)
 			user_with_same_email = Person.new(@attr)
 			user_with_same_email.save
+			user_with_same_email.should_not be_valid
 		end
 
-		it { should_not be_valid}
+		#it { should_not be_valid}
 	end
 
 	describe "when email format is invalid" do
@@ -66,6 +91,26 @@ describe Person do
 			person = Person.new(@att)
 			person.gender = " "
 			person.should_not be_valid
+		end
+	end
+
+	describe "when associated person address not set" do
+		it "should not be valid" do
+		person = Factory(:person, :email => "kmasters@foo.com")
+		addr = Address.new(:street_1 => "")
+		person.address = addr
+		person.save
+		person.should_not be_valid
+		end
+	end
+
+	describe "when associated person address is set" do
+		it "should be valid" do
+		person = Factory(:person, :email => "kmasters@foo.com")
+		addr = Address.new(:street_1 => "7402 bell blvd", :zip => "11111")
+		person.address = addr
+		person.save
+		person.should be_valid
 		end
 	end
 

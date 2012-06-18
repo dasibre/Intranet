@@ -5,7 +5,7 @@ class CreateAddresses < ActiveRecord::Migration
       t.string :street_2
       t.string :city
       t.string :state
-      t.string :zip, :limit => 5
+      t.string :zip, :limit => 9
 
       t.timestamps
     end
