@@ -44,7 +44,10 @@ module Intranet
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
-
+    #RSpec generators
+    config.generators do |g|
+	g.test_framework :rspec
+    end
     # Enable the asset pipeline
     config.assets.enabled = true
 
