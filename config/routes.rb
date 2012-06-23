@@ -1,4 +1,6 @@
 Intranet::Application.routes.draw do
+  get "people/index"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

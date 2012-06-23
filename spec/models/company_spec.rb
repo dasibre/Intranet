@@ -42,4 +42,21 @@ describe Company do
 		before {@company.address_id = " "}
 		it {should_not be_valid }
 	end
+	
+	describe "when address is invalid" do
+		it "should be invalid" do
+			address = Address.new
+			@company = Factory.build(:company, :address => address)
+			@company.save
+			@company.should_not be_valid
+		end
+	end
+	
+	describe "when address is valid" do
+		it "should be valid" do
+			address = Factory(:address)
+			@company.address = address
+			@company.should be_valid
+		end
+	end
 end

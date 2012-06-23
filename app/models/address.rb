@@ -17,13 +17,8 @@ class Address < ActiveRecord::Base
 	has_many :people
 	has_one	 :company
 	
+	ZIP_REGEX = /(^\d{5}(-\d{4})?$)|(^[ABCEGHJKLMNPRSTVXY]{1}\d{1}[A-Z]{1} *\d{1}[A-Z]{1}\d{1}$)/
 	validates :street_1, :presence => true
-	validates :zip, :presence => true
+	validates :zip, :presence => true, :format => ZIP_REGEX
 
-	def validate_on_create
-		if Address.find_by_street_1(street_1)
-		puts "already taken"
-		#model_instance.errors[:base] << "address already taken"
-		end
-	end
 end
