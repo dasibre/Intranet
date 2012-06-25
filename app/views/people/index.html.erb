@@ -1,14 +1,13 @@
 Afrails Intranet
+<% provide(:title, "Home Page") %>
+<table class="table table-bordered">
 <% @people.each do |person| %>
-<table class="table">
 	<tr>
-		<td><%=	person.title %></td>
+		<td><%=	person.last_name %></td>
 		<td><%=	person.work_phone %></td>
 		<td><%=	person.email %></td>
-	<td><%=	person.gender %></td>
-<td><%= link_to person.full_name, person_path(person) %></td>
-</tr>
-</table>
-
-
+		<td><%=	person.gender %></td>
+		<td><%= link_to person.full_name, person_path(person) %></td>
+	</tr>
 <% end %>
+</table>
