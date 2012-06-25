@@ -26,7 +26,7 @@ require 'spec_helper'
 describe Person do
 	
 	before do 
-		@attr = {:first_name => "Joe", :last_name => "smith", :email => "jsmith@ex.com", :gender => "M"}
+		@attr = {:first_name => "Joe", :last_name => "Smith", :email => "jsmith@foo.com", :gender => "M"}
 		#@person = Person.new(@attr)
 		@person = Factory(:person)
 	end
@@ -74,6 +74,13 @@ describe Person do
 		end
 
 		#it { should_not be_valid}
+		it "should be invalid" do
+			@attr = {:first_name => "Joe", :last_name => "Smith", :email => "jsmith@foo.com", :gender => "M"}
+			Person.create!(@attr)
+			user_with_same_email = Person.new(@attr)
+			user_with_same_email.should_not be_valid
+		end
+		#it { should_not be_valid }
 	end
 
 	describe "when email format is invalid" do
@@ -91,6 +98,26 @@ describe Person do
 			person = Person.new(@att)
 			person.gender = " "
 			person.should_not be_valid
+		end
+	end
+	
+	describe "when associated address is invalid" do
+		it "should be invalid" do
+			person = Person.new(@attr)
+			addr   = Address.new
+			person.address = addr
+			person.save
+			person.should_not be_valid
+		end
+	end
+	
+	describe "when associsated address is valid" do
+		it "should be valid" do
+			person = Person.new(@attr)
+			addr = Factory(:address)
+			person.address = addr
+			person.save
+			person.should be_valid
 		end
 	end
 

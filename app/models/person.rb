@@ -22,21 +22,24 @@
 #
 
 class Person < ActiveRecord::Base
-
-	belongs_to :address
+	#attr_accessible = :title, :first_name, :last_name, :email, :work_phone, :mobile, :job_title, :gender, :keywords, :notes 
+	
 	belongs_to :company
-
+	belongs_to :address
+	
+	validates_associated :address, :company
 	email_regex = /\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b/i
 	validates :first_name, :presence => true
-	validates :last_name,  :presence => true
-	validates_associated   :address, :company
-	validates :email, 	   :presence => true, 
-					 	   :uniqueness => { :case_sensitive => false }, 
-					       :format => { :with => email_regex}
+	validates :last_name, :presence => true
+	validates :email, :presence => true, :uniqueness => true, :format => { :with => email_regex}
 	GENDER = { 'M' => 'MALE', 'F' => "FEMALE"}
 	validates :gender, :inclusion => {:in => GENDER.keys }
 	
 	def full_name
 		"#{first_name} #{last_name}"
+	end
+
+	def self.find_all_ordered
+		find(:all, :order => 'last_name, first_name')
 	end
 end

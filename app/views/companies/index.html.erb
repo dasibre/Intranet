@@ -1,0 +1,5 @@
+<h1>Company Listing</h1>
+<% provide(:title, "companies") %>
+<% @companies.each do |company| %>
+<%= company.name %>
+<% end %>

@@ -16,8 +16,8 @@ class Company < ActiveRecord::Base
 	has_many	:people
 	belongs_to  :address
 	has_and_belongs_to_many :categories
-
 	validates :name, 	 :presence => true
-	validates :address,  :presence => true
 	validates_associated :address
+	validates :address,  :presence => true
+
 end

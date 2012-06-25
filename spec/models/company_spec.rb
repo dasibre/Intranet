@@ -15,5 +15,48 @@
 require 'spec_helper'
 
 describe Company do
-  pending "add some examples to (or delete) #{__FILE__}"
+  
+	before do
+		@attr = {:name => "Afrails Inc", :phone => "1888-009-9999"}
+		@company = Factory(:address_for_company)
+		#address = Factory(:address)
+		#@company = Factory(:company, :address => address)
+	end
+	
+	subject { @company }
+	
+	it {should respond_to(:name)}
+	it { should respond_to(:phone)}
+	it { should respond_to(:fax)}
+	it {should respond_to(:website)}
+	it {should respond_to (:address)}
+
+	it { should be_valid }
+	
+	describe "when name is blank" do
+		before {@company.name = ""}
+		it {should_not be_valid }
+	end
+	
+	describe "when address is blank" do
+		before {@company.address_id = " "}
+		it {should_not be_valid }
+	end
+	
+	describe "when address is invalid" do
+		it "should be invalid" do
+			address = Address.new
+			@company = Factory.build(:company, :address => address)
+			@company.save
+			@company.should_not be_valid
+		end
+	end
+	
+	describe "when address is valid" do
+		it "should be valid" do
+			address = Factory(:address)
+			@company.address = address
+			@company.should be_valid
+		end
+	end
 end

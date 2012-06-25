@@ -12,16 +12,25 @@ Factory.define :person do |person|
 	person.association		:address
 end
 
+
+
 Factory.define :address do |address|
-	address.street_1		"75-29 bell blvd"
-	address.street_2		"apt 3b"
-	address.city			"Oakland Gardens"
-	address.state			"NY"
-	address.zip             "10460"
-end
+	address.street_1	 "123 bell street"
+	address.street_2	 "Apt 3b"
+	address.city		 "Queens"
+	address.state		 "NY"
+	address.zip		 "11364"
+end		
 
 Factory.define :company do |company|
-	company.name 			"AfRails"
-	company.address			{Factory(:address)}
-	company.association		:address
+	company.name		"Afrails"
+	company.phone		"888-222-2222"
+	company.fax		"222-222-2233"
+	company.website		"www.afrails.com"
+	company.association	:address
 end
+
+Factory.define :address_for_company, :parent => :company do |company|
+	company.after_create { |comp| Factory(:address, :company => comp) }
+end
+

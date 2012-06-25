@@ -21,4 +21,5 @@ class Address < ActiveRecord::Base
 	validates :street_1, :presence => true
 	validates :zip, :format => { :with => ZIP_REGEX }
 
+
 end
