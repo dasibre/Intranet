@@ -1,7 +1,8 @@
 Intranet::Application.routes.draw do
-  get "people/index"
+  #get "people/index"
   resources :people
   match '/companies', :to => 'companies#index'
+  match "/new", :to => "people#new"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

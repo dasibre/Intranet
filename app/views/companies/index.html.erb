@@ -1,5 +1,24 @@
 <h1>Company Listing</h1>
+
 <% provide(:title, "companies") %>
+<% if @companies.empty? %>
+	<%= render :text => "Please add company" %>
+   <% else %>
+<table class="table table-bordered">
+	<tr>
+		<th>Name</th>
+		<th>Phone</th>
+		<th>Fax</th>
+		<th>website</th>
+	</tr>
 <% @companies.each do |company| %>
-<%= company.name %>
+      <tr>
+	  <td><%= company.name %></td>
+	  <td><%= company.phone %></td>
+	  <td><%=d company.fax %></td>
+	  <td><%= company.website %></td>
+	</tr>
+
 <% end %>
+<% end %>
+</table>

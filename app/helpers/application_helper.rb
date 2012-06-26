@@ -7,4 +7,12 @@ module ApplicationHelper
 			"#{base_title} | #{page_title}"
 		end
 	end
+	
+	def d(field_value=nil)
+		if field_value.blank?
+			return content_tag('em','not specified')
+		else
+			return field_value
+		end
+	end
 end

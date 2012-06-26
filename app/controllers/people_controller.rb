@@ -11,4 +11,8 @@ class PeopleController < ApplicationController
   	@title = "#{@person.full_name} + Profile"
   end
 
+  def new
+	@person = Person.new
+  end
+
 end
