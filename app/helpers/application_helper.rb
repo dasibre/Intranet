@@ -8,11 +8,15 @@ module ApplicationHelper
 		end
 	end
 	
-	def d(field_value=nil)
+	def no_val(field_value=nil)
 		if field_value.blank?
 			return content_tag('em','not specified')
 		else
 			return field_value
 		end
+	end
+
+	def human_date(date)
+		date.strftime("%d %B %Y")
 	end
 end
