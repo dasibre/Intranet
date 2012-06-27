@@ -17,6 +17,10 @@ module ApplicationHelper
 	end
 
 	def human_date(date)
-		date.strftime("%d %B %Y")
+		if date.nil?
+		   nil
+		else
+			date.strftime("%d %B %Y")
+		end
 	end
 end

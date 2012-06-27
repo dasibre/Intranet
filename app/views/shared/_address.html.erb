@@ -1,0 +1,8 @@
+
+<% if address %>
+ <strong>Street: </strong><%= address.street_1 %><br />
+	<%= address.street_2 unless address.street_2.blank? %>
+ <strong> City:</strong> <%= address.city %>
+  <strong> <%= address.state %>
+	<%= address.zip %>
+<% end %>

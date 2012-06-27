@@ -9,11 +9,4 @@
 <p><strong>Notes:</strong><br/><%=no_val @person.notes %></p>
 
 <h1> Address </h1>
-<% address = @person.address %>
-	<% if address %>
-	<%= address.street_1 %>
-	<%= address.street_2 %>
-	<%= address.city %>
-	<%= address.state %>
-	<%= address.zip %>
-	<% end %>
+<%= render :partial => 'shared/address', :locals => {:address => @person.address } %>
