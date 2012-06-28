@@ -9,16 +9,19 @@
 		<th>Name</th>
 		<th>Phone</th>
 		<th>Fax</th>
-		<th>website</th>
+		<th>Website</th>
+		<th>Address</th>
 	</tr>
 <% @companies.each do |company| %>
       <tr>
 	  <td><%= company.name %></td>
 	  <td><%= company.phone %></td>
-	  <td><%=d company.fax %></td>
+	  <td><%=no_val company.fax %></td>
 	  <td><%= company.website %></td>
+	  <td><%= render :partial => 'shared/address', :locals => {:address => company.address } %></td>
 	</tr>
 
 <% end %>
 <% end %>
 </table>
+<%= link_to 'Clients', root_path %>

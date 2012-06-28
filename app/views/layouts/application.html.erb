@@ -10,20 +10,13 @@
     <![endif]-->
   </head>
   <body>
-    <header class="navbar navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <%= link_to "Intranet", '#', id: "logo" %>
-          <nav>
-            <ul class="nav pull-right">
-              <li><%= link_to "Home",    '#' %></li>
-              <li><%= link_to "Customers",    '#' %></li>
-              <li><%= link_to "Sign in", '#' %></li>
-            </ul>
-          </nav>
-        </div>
-      </div>
-    </header>
+    <%= render 'layouts/header' %>
+    <nav>
+      <ul>
+         <li><%=link_to 'customers', root_path %></li>
+         <li><%=link_to 'companies', companies_path %></li>
+       </ul>
+    </nav>
     <div class="container">
       <%= yield %>
 	<%= render 'layouts/footer' %>

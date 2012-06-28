@@ -2,7 +2,7 @@
 <% if address %>
  <strong>Street: </strong><%= address.street_1 %><br />
 	<%= address.street_2 unless address.street_2.blank? %>
- <strong> City:</strong> <%= address.city %>
-  <strong> <%= address.state %>
-	<%= address.zip %>
+ <strong> City:</strong> <%= address.city %><br />
+  <strong> State: </strong><%= address.state %><br />
+	<strong>zip: </strong><%= address.zip %>
 <% end %>
