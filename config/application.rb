@@ -47,6 +47,11 @@ module Intranet
     #RSpec generators
     config.generators do |g|
 	g.test_framework :rspec
+        #:fixtures => true,
+        #:view_specs => false,
+        #:controller_specs => true,
+        #:request_specs => true
+    #g.fixture_replacement :factory_girl, :dir => "spec/factories.rb"
     end
     # Enable the asset pipeline
     config.assets.enabled = true

@@ -1,7 +1,7 @@
 Factory.define :person do |person|
 	person.title			"Mr"
 	person.first_name		"Kwame"
-	person.last_name		"Nyame"
+	person.last_name		"black"
 	person.email			"knyame@foo.com"
 	person.work_phone		"555-555-5555"
 	person.mobile			"333-333-3333"

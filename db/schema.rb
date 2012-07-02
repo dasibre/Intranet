@@ -11,18 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(:version => 20120618015418) do
-=======
 ActiveRecord::Schema.define(:version => 20120620161516) do
->>>>>>> 549b2b673be584fd23046059a3380e167301a4f4
 
   create_table "addresses", :force => true do |t|
     t.string   "street_1",                :null => false
     t.string   "street_2"
     t.string   "city"
     t.string   "state"
-    t.string   "zip",        :limit => 5
+    t.string   "zip",        :limit => 9
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -32,19 +28,11 @@ ActiveRecord::Schema.define(:version => 20120620161516) do
     t.datetime "updated_at"
   end
 
-<<<<<<< HEAD
-=======
   create_table "categories_companies", :force => true do |t|
     t.integer "categories_id"
     t.integer "companies_id"
   end
 
-  create_table "catetories", :force => true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
->>>>>>> 549b2b673be584fd23046059a3380e167301a4f4
   create_table "companies", :force => true do |t|
     t.string   "name",                     :null => false
     t.string   "phone",      :limit => 50
