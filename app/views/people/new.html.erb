@@ -1,4 +1,5 @@
 <h1>Add new Person</h1>
+<%provide(:title, "New customer") %>
 <%= form_for @person do |f| %>
 <%= f.label :title %>
 <%= f.text_field :title %>
@@ -6,4 +7,23 @@
 <%= f.text_field :first_name %>
 <%= f.label :last_name %>
 <%= f.text_field :last_name %>
-	<% end %>
+<%= f.label :email %>
+<%= f.email_field :email %>
+<%= f.label :Phone %>
+<%= f.text_field :work_phone %>
+<%= f.label :Mobile %>
+<%= f.text_field :mobile %>
+<%= f.label :job_title %>
+<%= f.text_field :job_title %>
+<%= f.label :keywords %>
+<%= f.text_field :keywords %>
+<div id="textarea">
+<%= f.label :notes %>
+<%= f.text_area :notes %>
+</div>
+<div class="gender-select">
+<%= f.label(:gender) %>
+<%= f.select :gender, Person::GENDER.keys %>
+</div>
+<%= f.submit "Add Customer" %>
+<% end %>

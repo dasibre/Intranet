@@ -15,4 +15,13 @@ class PeopleController < ApplicationController
 	   @person = Person.new
   end
 
+  def create
+    @person = Person.new(params[:person])
+    if @person.save
+        redirect_to @person # :flash => { :success => "New customer added" }
+    else
+      render 'new'
+    end
+  end
+
 end

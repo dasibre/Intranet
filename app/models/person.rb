@@ -32,7 +32,7 @@ class Person < ActiveRecord::Base
 	validates :first_name, :presence => true
 	validates :last_name, :presence => true
 	validates :email, :presence => true, :uniqueness => true, :format => { :with => email_regex}
-	GENDER = { 'M' => 'MALE', 'F' => "FEMALE"}
+	GENDER = { 'M' => 'MALE', 'F' => "FEMALE", "T" => "TRANSEXUAL"}
 	validates :gender, :inclusion => {:in => GENDER.keys }
 	
 	def full_name
