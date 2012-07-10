@@ -1,10 +1,12 @@
 <h1>Add new Person</h1>
 <%provide(:title, "New customer") %>
+<div class="well">
 <%= form_for @person do |f| %>
+<%= render 'shared/error_messages' %>
 <%= f.label :title %>
-<%= f.text_field :title %>
+<%= f.text_field :title, :autofocus => true %>
 <%= f.label :first_name %>
-<%= f.text_field :first_name %>
+<%= f.text_field :first_name, :placeholder => "Required field" %>
 <%= f.label :last_name %>
 <%= f.text_field :last_name %>
 <%= f.label :email %>
@@ -17,13 +19,12 @@
 <%= f.text_field :job_title %>
 <%= f.label :keywords %>
 <%= f.text_field :keywords %>
-<div id="textarea">
 <%= f.label :notes %>
 <%= f.text_area :notes %>
-</div>
-<div class="gender-select">
 <%= f.label(:gender) %>
 <%= f.select :gender, Person::GENDER.keys %>
+<%= f.label :date_of_birth, 'Date of Birth' %>
+<%= f.date_select :date_of_birth, :order => [:month, :day, :year], :include_blank => true, :end_year => (Time.now.year - 100), :start_year => Time.now.year %>
 </div>
 <%= f.submit "Add Customer" %>
 <% end %>

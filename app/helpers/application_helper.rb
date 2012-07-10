@@ -23,4 +23,15 @@ module ApplicationHelper
 			date.strftime("%d %B %Y")
 		end
 	end
+
+	# adds * to required fields
+	def form_label(model, label_text, options={})
+		field_name = options[:field_name]
+		field_name ||= label_text.gsub(' ', '_')
+		label_for = (model.to_s + '_' + field_name).downcase
+		label_tag = content_tag('label', label_text, label_for)
+		label_tag += '*' if options[:required]
+		#label_tag += ':'
+		content_tag('strong', label_tag)
+	end
 end

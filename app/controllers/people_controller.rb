@@ -18,8 +18,9 @@ class PeopleController < ApplicationController
   def create
     @person = Person.new(params[:person])
     if @person.save
-        redirect_to @person # :flash => { :success => "New customer added" }
+        redirect_to @person, :flash => { :notice => "New customer added" }
     else
+      flash.now[:error] = "Fill all required fields"
       render 'new'
     end
   end
