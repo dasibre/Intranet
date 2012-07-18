@@ -7,6 +7,9 @@
 <p><strong>Gender:</strong> <%=no_val @person.gender %></p>
 <p><strong>Keywords:</strong> <%=no_val @person.keywords %></p>
 <p><strong>Notes:</strong><br/><%=no_val @person.notes %></p>
-
+<%= link_to 'edit', edit_person_path %> | <%= link_to 'delete', 
+														person_path(@person, :destroy => true), 
+																			:confirm => "Are you sure",
+																			:method => :delete %>
 <h1> Address </h1>
 <%= render :partial => 'shared/address', :locals => {:address => @person.address } %>

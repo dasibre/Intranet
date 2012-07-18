@@ -3,6 +3,7 @@ Intranet::Application.routes.draw do
   resources :people
   match '/companies', :to => 'companies#index'
   match "/new", :to => "people#new"
+  match "/delete", :to => "people#destroy"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -1,8 +1,5 @@
-<h1>Add new Person</h1>
-<%provide(:title, "New customer") %>
 <div class="well">
-<%= form_for @person do |f| %>
-<%= render 'shared/error_messages' %>
+<%= render 'shared/error_messages', :object => f.object %>
 <%= f.label :title %>
 <%= f.text_field :title, :autofocus => true %>
 <%= f.label :first_name %>
@@ -26,5 +23,3 @@
 <%= f.label :date_of_birth, 'Date of Birth' %>
 <%= dob f, :date_of_birth %>
 </div>
-<%= f.submit "Add Customer" %> | <%= link_to 'Cancel', root_path %>
-<% end %>

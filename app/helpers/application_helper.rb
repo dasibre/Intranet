@@ -34,4 +34,9 @@ module ApplicationHelper
 		#label_tag += ':'
 		content_tag('strong', label_tag)
 	end
+
+	def dob(object_name, method, options={})
+		date = Time.now.year
+		this_date = date_select(object_name,method, :order => [:month, :day, :year], :end_year => (date - 100), :start_year => (date), :include_blank => true)
+	end
 end

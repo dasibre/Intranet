@@ -46,4 +46,15 @@ describe PeopleController do
     end
   end
 
+  describe "edit" do
+    before do
+      @person = Factory(:person)
+      get :edit, :id => @person
+    end
+
+    it { should respond_with(:success)}
+    it {should render_template(:edit)}
+    it {should assign_to(:person)}
+  end
+
 end

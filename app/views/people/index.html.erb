@@ -7,7 +7,11 @@
 		<td><%=	person.work_phone %></td>
 		<td><%=	person.email %></td>
 		<td><%=	person.gender %></td>
-		<td><%= link_to person.full_name, person_path(person) %></td>
+		<td><%= link_to person.full_name, person_path(person) %> | 
+			<%= link_to 'edit', edit_person_path(person) %> | 
+			<%= link_to 'delete', person_path(person, :destroy => true), :confirm => "Are you sure", 
+																		  :method => :delete %>
+		</td>
 	</tr>
 <% end %>
 </table>

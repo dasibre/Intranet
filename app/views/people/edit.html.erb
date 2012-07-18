@@ -1,0 +1,7 @@
+<h1>Edit Person</h1>
+<%= form_for @person do |f| %>
+<%= render 'layouts/form_fields', :f => f %>
+<div class="button">
+<%= f.submit 'Update' %>
+</div>
+<% end %>
