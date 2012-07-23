@@ -1,25 +1,45 @@
-<div class="well">
-<%= render 'shared/error_messages', :object => f.object %>
-<%= f.label :title %>
-<%= f.text_field :title, :autofocus => true %>
-<%= f.label :first_name %>
-<%= f.text_field :first_name, :placeholder => "Required field" %>
-<%= f.label :last_name %>
-<%= f.text_field :last_name %>
-<%= f.label :email %>
-<%= f.email_field :email %>
-<%= f.label :Phone %>
-<%= f.text_field :work_phone %>
-<%= f.label :Mobile %>
-<%= f.text_field :mobile %>
-<%= f.label :job_title %>
-<%= f.text_field :job_title %>
-<%= f.label :keywords %>
-<%= f.text_field :keywords %>
-<%= f.label :notes %>
-<%= f.text_area :notes %>
-<%= f.label(:gender) %>
-<%= f.select :gender, Person::GENDER.keys %>
-<%= f.label :date_of_birth, 'Date of Birth' %>
-<%= dob f, :date_of_birth %>
-</div>
+	<%= render 'shared/error_messages', :object => f.object %>
+	<legend>Contact Info</legend>
+
+		<div class="row">
+			<div class="span3">
+			
+			<%= f.label :title %>
+			<%= f.text_field :title %>
+			<%= f.label :first_name %>
+			<%= f.text_field :first_name, :placeholder => "Required field" %>
+			<%= f.label :last_name %>
+			<%= f.text_field :last_name %>
+			<%= f.label :email %>
+			<%= f.email_field :email %>
+			<%= render :partial => 'addresses/address_form', :locals => { :address => @address } %>
+		</div>
+		<div class="offset4">
+		<div class="span3">
+				<div class="form-horizontal">
+					<fieldset>
+						<div class="control-group">
+							<%= f.label :Phone %>
+								<%= f.text_field :work_phone %>
+								<%= f.label :Mobile %>
+								<%= f.text_field :mobile %>
+								<%= f.label :job_title %>
+								<%= f.text_field :job_title %>
+								<%= f.label :keywords %>
+								<%= f.text_field :keywords %>
+								<%= f.label :notes %>
+								<%= f.text_area :notes %>
+								<%= f.label(:gender) %>
+								<%= f.select :gender, Person::GENDER.keys %><br />
+								<%= f.label :date_of_birth, 'Date of Birth' %>
+								<%= dob :person, :date_of_birth %>
+				
+						</div>
+				</fieldset>
+			</div>
+		
+			</div>
+		</div>
+		</div>
+
+

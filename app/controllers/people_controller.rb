@@ -17,10 +17,13 @@ class PeopleController < ApplicationController
 
   def new
 	   @person = Person.new
+     #@address = Address.new
   end
 
   def create
     @person = Person.new(params[:person])
+    @person.address = Address.from_street_1_and_zip(params[:address])
+    @address = @person.address || Address.new
     if @person.save
         redirect_to @person, :flash => { :notice => "New customer added" }
     else
@@ -31,9 +34,12 @@ class PeopleController < ApplicationController
 
   def edit
     @person.full_name
+    @address = @person.address || Address.new
   end
 
   def update
+    @person.address = Address.from_street_1_and_zip(params[:address])
+    @address = @person.address
     if @person.update_attributes(params[:person])
       flash[:notice]= "Person successfully updated"
       redirect_to(@person)

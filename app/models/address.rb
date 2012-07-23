@@ -22,4 +22,20 @@ class Address < ActiveRecord::Base
 	validates :zip, :format => { :with => ZIP_REGEX }
 
 
+	def self.from_street_1_and_zip(params)
+		params ||= {}
+		street_1 = params[:street_1]
+		zip = params[:zip]
+		if street_1.blank? and zip.blank?
+			address = nil
+		else
+			address = find_or_initialize_by_street_1_and_zip(street_1, zip)
+			address.attributes = params
+		end
+		address
+	end
+
+
+
+
 end

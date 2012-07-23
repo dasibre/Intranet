@@ -1,30 +1,12 @@
 <h1>Add new Person</h1>
 <%provide(:title, "New customer") %>
 <div class="well">
-<%= form_for @person do |f| %>
-<%= render 'shared/error_messages' %>
-<%= f.label :title %>
-<%= f.text_field :title, :autofocus => true %>
-<%= f.label :first_name %>
-<%= f.text_field :first_name, :placeholder => "Required field" %>
-<%= f.label :last_name %>
-<%= f.text_field :last_name %>
-<%= f.label :email %>
-<%= f.email_field :email %>
-<%= f.label :Phone %>
-<%= f.text_field :work_phone %>
-<%= f.label :Mobile %>
-<%= f.text_field :mobile %>
-<%= f.label :job_title %>
-<%= f.text_field :job_title %>
-<%= f.label :keywords %>
-<%= f.text_field :keywords %>
-<%= f.label :notes %>
-<%= f.text_area :notes %>
-<%= f.label(:gender) %>
-<%= f.select :gender, Person::GENDER.keys %>
-<%= f.label :date_of_birth, 'Date of Birth' %>
-<%= dob f, :date_of_birth %>
+	<div class="row">
+		<div class="span6">
+		<%= form_for @person do |f| %>
+		<%= render 'layouts/form_fields', :f => f %>
+		<%= f.submit "Create Person", class: "btn btn-large btn-primary" %> | <%= link_to 'Cancel', root_path %>
+	</div>
+	</div>
 </div>
-<%= f.submit "Add Customer" %> | <%= link_to 'Cancel', root_path %>
 <% end %>
