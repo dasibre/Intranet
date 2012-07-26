@@ -1,6 +1,7 @@
 class PeopleController < ApplicationController
   
   before_filter :get_person, :only => [:show, :update, :edit]
+  before_filter :get_companies, :only => [:edit, :new, :update, :create]
 
   def index
   	@title = 'Home page'
@@ -17,7 +18,7 @@ class PeopleController < ApplicationController
 
   def new
 	   @person = Person.new
-     #@address = Address.new
+     #@address = Address.new 
   end
 
   def create
@@ -58,6 +59,10 @@ class PeopleController < ApplicationController
 
   def get_person
     @person = Person.find(params[:id])
+  end
+
+  def get_companies
+    @companies = Company.find(:all, :order => 'name' )
   end
 
 end

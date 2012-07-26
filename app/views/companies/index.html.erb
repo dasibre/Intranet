@@ -2,7 +2,7 @@
 
 <% provide(:title, "companies") %>
 <% if @companies.empty? %>
-	<%= render :text => "Please add company" %>
+	<%= link_to 'new', new_company_path %>
    <% else %>
 <table class="table table-bordered">
 	<tr>
@@ -14,7 +14,7 @@
 	</tr>
 <% @companies.each do |company| %>
       <tr>
-	  <td><%= company.name %></td>
+	  <td><%= company.name %> <%= link_to 'Edit', edit_company_path(company) %></td>
 	  <td><%= company.phone %></td>
 	  <td><%=no_val company.fax %></td>
 	  <td><%= company.website %></td>
@@ -22,6 +22,7 @@
 	</tr>
 
 <% end %>
+
 <% end %>
 </table>
-<%= link_to 'Clients', root_path %>
+

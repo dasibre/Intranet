@@ -1,6 +1,7 @@
 Intranet::Application.routes.draw do
   #get "people/index"
   resources :people
+  resources :companies, :addresses
   match '/companies', :to => 'companies#index'
   match "/new", :to => "people#new"
   match "/delete", :to => "people#destroy"

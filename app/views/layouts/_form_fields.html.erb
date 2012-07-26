@@ -12,6 +12,8 @@
 			<%= f.text_field :last_name %>
 			<%= f.label :email %>
 			<%= f.email_field :email %>
+			<%= f.label :company %>
+			<%= f.collection_select(:company_id, @companies, :id, :name, :include_blank => true) %>
 			<%= render :partial => 'addresses/address_form', :locals => { :address => @address } %>
 		</div>
 		<div class="offset4">

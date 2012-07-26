@@ -1,0 +1,15 @@
+<h1> Add new company </h1>
+
+<%= form_for @company do |f| %>
+<%= render 'shared/error_messages', :object => f.object %>
+	<%= f.label :name,"Business Name" %>
+	<%= f.text_field :name %>
+	<%= f.label :Phone,"Telephone" %>
+	<%= f.text_field :phone %>
+	<%= f.label :Fax %>
+	<%= f.text_field :fax %>
+	<%= f.label :website, "Company Url" %>
+	<%= f.text_field :website %>
+	<%= render :partial => 'addresses/address_form' %><br />
+	<%= f.submit 'Create', class: "btn btn-large btn-primary" %>
+	<% end %>
