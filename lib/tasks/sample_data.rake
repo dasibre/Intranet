@@ -5,20 +5,39 @@ namespace :db do
 	task :populate => :environment do
 		Rake::Task['db:reset'].invoke
 		make_people
-		#make_microposts
+		make_addresses
 		#make_relationships
-		#@genders = ["Male","Female"]
 	end
 end
 
-def make_people
+def make_addresses
 	20.times do
-	person = Person.create!(
+		address = Address.create!(
+			:street_1 => Faker::Address.street_address,
+			:city => Faker::Address.city,
+			:state => Faker::Address.us_state_abbr,
+			:zip => Faker::Address.zip_code)
+	end
+
+end
+
+def make_people
+	genders = ["M", "F"].each do |g|
+		20.times do
+		person = Person.create!(
 		:first_name => Faker::Name.first_name,
 		:last_name => Faker::Name.last_name,
 		:email => Faker::Internet.email,
-		:gender => "M")
+		:gender => g,
+		:address_id => Address.create!(
+			:street_1 => Faker::Address.street_address,
+			:city => Faker::Address.city,
+			:state => Faker::Address.us_state_abbr,
+			:zip => Faker::Address.zip_code))
+
+		end
 	end
+	
 end
 
 #def make_user

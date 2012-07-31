@@ -23,7 +23,7 @@ class Address < ActiveRecord::Base
 
 
 	def self.from_street_1_and_zip(params)
-		params ||= {}
+		params ||= []
 		street_1 = params[:street_1]
 		zip = params[:zip]
 		if street_1.blank? and zip.blank?

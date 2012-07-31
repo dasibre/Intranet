@@ -22,6 +22,8 @@ group :development, :test do
   gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git'
   gem 'faker', '0.3.1', :require => false
   gem 'sqlite3'
+  gem 'friendly_id', '~> 4.0.1'
+
  # gem 'haml-rails'
   #gem 'hpricot'
   #gem 'ruby_parser'

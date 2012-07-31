@@ -23,7 +23,8 @@
 
 class Person < ActiveRecord::Base
 	#attr_accessible = :title, :first_name, :last_name, :email, :work_phone, :mobile, :job_title, :gender, :keywords, :notes 
-	
+	extend FriendlyId
+	friendly_id :last_name, use: :slugged
 	belongs_to :company
 	belongs_to :address
 	
@@ -38,6 +39,9 @@ class Person < ActiveRecord::Base
 	def full_name
 		"#{first_name} #{last_name}"
 	end
+
+
+
 
 	def self.find_all_ordered
 		find(:all, :order => 'last_name, first_name')
