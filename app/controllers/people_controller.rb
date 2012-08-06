@@ -1,5 +1,5 @@
 class PeopleController < ApplicationController
-  
+  before_filter :authenticate_user!
   before_filter :get_person, :only => [:show, :update, :edit]
   before_filter :get_companies, :only => [:edit, :new, :update, :create]
 

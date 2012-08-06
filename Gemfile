@@ -23,6 +23,7 @@ group :development, :test do
   gem 'faker', '0.3.1', :require => false
   gem 'sqlite3'
   gem 'friendly_id', '~> 4.0.1'
+  gem 'devise'
 
  # gem 'haml-rails'
   #gem 'hpricot'
@@ -51,4 +52,5 @@ gem 'jquery-rails'
 
 group :production do
   gem 'pg'
+  gem 'devise'
 end

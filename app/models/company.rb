@@ -21,4 +21,9 @@ class Company < ActiveRecord::Base
 	validates_associated :address
 	validates :address,  :presence => true
 
+	def self.find_all_ordered
+		find(:all)
+	end
+
+
 end

@@ -2,7 +2,7 @@
 
 <% provide(:title, "companies") %>
 <% if @companies.empty? %>
-	<%= link_to 'new', new_company_path %>
+	<%=  button_to "Add New Company", new_company_path, :class => "btn btn-large btn-primary", :method => "get" %>
    <% else %>
 <table class="table table-bordered">
 	<tr>

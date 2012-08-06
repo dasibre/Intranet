@@ -1,10 +1,20 @@
-<h1>Afrails Intranet</h1>
+<h1>Customers</h1>
 <% provide(:title, "Home Page") %>
 <table class="table table-bordered">
+	<thead>
+		<tr>
+		<th>First Name</th>
+		<th>Last Name</th>
+		<th>Email Address</th>
+		<th>Gender</th>
+		<th>Actions</th>
+	</tr>
+	</thead>
+	<tbody>
 <% @people.each do |person| %>
 	<tr>
+		<td><%=	person.first_name %></td>
 		<td><%=	person.last_name %></td>
-		<td><%=	person.work_phone %></td>
 		<td><%=	person.email %></td>
 		<td><%=	person.gender %></td>
 		<td><%= link_to person.full_name, person_path(person) %> | 
@@ -14,4 +24,6 @@
 		</td>
 	</tr>
 <% end %>
+</tbody>
 </table>
+</div>

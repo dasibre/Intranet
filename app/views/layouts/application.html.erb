@@ -14,15 +14,12 @@
     <% flash.each do |key,value| %>
     <div class="alert alert-<%= key %>"><%= value %></div>
     <% end %>
-    <nav>
-      <ul>
-         <li><%=link_to 'customers', root_path %></li>
-         <li><%=link_to 'companies', companies_path %></li>
-       </ul>
-    </nav>
-    <div class="container">
+    
+    <div class="container-fluid">
+      <div class="row-fluid">
       <%= yield %>
-	<%= render 'layouts/footer' %>
-    </div>
+</div>
+  </div>
+  <%= render 'layouts/footer' %>
   </body>
 </html>

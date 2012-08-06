@@ -10,17 +10,6 @@ namespace :db do
 	end
 end
 
-def make_addresses
-	20.times do
-		address = Address.create!(
-			:street_1 => Faker::Address.street_address,
-			:city => Faker::Address.city,
-			:state => Faker::Address.us_state_abbr,
-			:zip => Faker::Address.zip_code)
-	end
-
-end
-
 def make_people
 	genders = ["M", "F"].each do |g|
 		20.times do
@@ -28,16 +17,26 @@ def make_people
 		:first_name => Faker::Name.first_name,
 		:last_name => Faker::Name.last_name,
 		:email => Faker::Internet.email,
-		:gender => g,
-		:address_id => Address.create!(
-			:street_1 => Faker::Address.street_address,
-			:city => Faker::Address.city,
-			:state => Faker::Address.us_state_abbr,
-			:zip => Faker::Address.zip_code))
+		:gender => g)
+		#:address_id => Address.create!(
+			#:street_1 => Faker::Address.street_address,
+			#:city => Faker::Address.city,
+			#:state => Faker::Address.us_state_abbr,
+			#:zip => Faker::Address.zip_code))
 
 		end
 	end
 	
+end
+
+def make_addresses
+	Person.all.each do |person|
+		person.build_address(:street_1 => Faker::Address.street_address,
+                             :city => Faker::Address.city,
+                             :state => Faker::Address.us_state_abbr,
+                             :zip => Faker::Address.zip_code)
+		person.save
+	end
 end
 
 #def make_user
