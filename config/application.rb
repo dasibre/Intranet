@@ -57,7 +57,12 @@ module Intranet
     end
     # Enable the asset pipeline
     config.assets.enabled = true
-
+	
+    #catch all routing errors
+    config.after_initialize do |app|
+      app.routes.append{match '*path', :to => 'errors#not_found'}
+     end
+   	
     #disable asset precompile for heroku
     #config.assets.initialize_on_precompile = false
 

@@ -1,10 +1,7 @@
 class CompaniesController < ApplicationController
 
 	def index
-		@companies = Company.find_all_ordered
-		unless @companies.empty?
-			render 'new'
-		end
+		@companies = Company.all
 	end
 
 	def new

@@ -10,6 +10,7 @@
 	<%= f.text_field :fax %>
 	<%= f.label :website, "Company Url" %>
 	<%= f.text_field :website %>
+	<h2>Address is Optional</h2>
 	<%= render :partial => 'addresses/address_form' %><br />
 	<%= f.submit 'Create', class: "btn btn-large btn-primary" %>
 <% end %>
